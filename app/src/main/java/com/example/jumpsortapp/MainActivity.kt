@@ -21,6 +21,7 @@ class MainActivity : ComponentActivity() {
             JumpSortAppTheme {
                 // A surface container using the 'background' color from the theme
                 JumpSortScreen()
+
             }
         }
     }
