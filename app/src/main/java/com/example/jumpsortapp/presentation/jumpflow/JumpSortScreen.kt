@@ -27,6 +27,12 @@ fun JumpSortScreen() {
     val inputValues = remember {
         mutableStateOf("")
     }
+    val keyValue = remember {
+        mutableStateOf("")
+    }
+    val keyIndexValue = remember {
+        mutableStateOf("")
+    }
     val enabled = remember {
         mutableStateOf(true)
     }
@@ -79,7 +85,78 @@ fun JumpSortScreen() {
         ) {
             Text(text = "Insert")
         }
-        Spacer(modifier = Modifier.padding(8.dp))
+        Spacer(modifier = Modifier.padding(28.dp))
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            modifier = Modifier
+                .fillMaxWidth()
+        ) {
+            Column(verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
+                Text(
+                    text = "Enter Key : ",
+                    style = TextStyle(fontSize = 20.sp, fontWeight = FontWeight.Bold, color = Color.White),
+                )
+                Spacer(modifier = Modifier.padding(5.dp))
+                OutlinedTextField(
+                    value = keyValue.value,
+                    onValueChange = { keyValue.value = it },
+                    enabled = enabled.value,
+                    modifier = Modifier.size(50.dp),
+                    colors = TextFieldDefaults.outlinedTextFieldColors(
+                        focusedBorderColor = ElectricBlue,
+                        unfocusedBorderColor = ElectricBlue,
+                        cursorColor = Color.White,
+                        textColor = Color.White,
+                        disabledBorderColor = ElectricBlue,
+                    ),
+                    maxLines = 1
+                )
+                Spacer(modifier = Modifier.padding(10.dp))
+                Button(
+                    onClick = { /*TODO*/ }, modifier = Modifier
+                        .clip(
+                            RoundedCornerShape(10.dp)
+                        )
+                ) {
+                    Text(text = "Search")
+                }
+            }
+            Column(
+                verticalArrangement = Arrangement.Top,
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier.height(140.dp)
+            ) {
+                Text(
+                    text = "Key index : ",
+                    style = TextStyle(
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Color.White
+                    ),
+                )
+                Spacer(modifier = Modifier.padding(5.dp))
+                OutlinedTextField(
+                    value = keyIndexValue.value,
+                    onValueChange = { keyIndexValue.value = it },
+                    enabled = enabled.value,
+                    modifier = Modifier.size(50.dp),
+                    colors = TextFieldDefaults.outlinedTextFieldColors(
+                        focusedBorderColor = ElectricBlue,
+                        unfocusedBorderColor = ElectricBlue,
+                        cursorColor = Color.White,
+                        textColor = Color.White,
+                        disabledBorderColor = ElectricBlue,
+                    ),
+                    maxLines = 1
+                )
+            }
+        }
+        Spacer(modifier = Modifier.height(15.dp))
+        BottomAppBar(modifier = Modifier.fillMaxWidth(), contentPadding = PaddingValues(12.dp)) {
+            Button(onClick = { /*TODO*/ }) {
 
+            }
+        }
     }
 }
