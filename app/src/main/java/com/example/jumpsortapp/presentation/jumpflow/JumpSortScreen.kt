@@ -17,6 +17,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.jumpsortapp.presentation.jumpflow.component.element
 import com.example.jumpsortapp.ui.theme.Aquamarine
 import com.example.jumpsortapp.ui.theme.ElectricBlue
 import com.google.accompanist.flowlayout.FlowCrossAxisAlignment
@@ -38,6 +39,7 @@ fun JumpSortScreen() {
     val enabled = remember {
         mutableStateOf(true)
     }
+    val list1 = listOf<String>("70","15","85","35","08")
     Scaffold(
         topBar = {
             TopAppBar(modifier = Modifier
@@ -148,8 +150,8 @@ fun JumpSortScreen() {
                 crossAxisSpacing = 5.dp,
 
                 ) {
-                repeat(10){
-                    Text(text = "ME")
+                list1.sorted().forEach { it ->
+                    element(element = it)
                 }
             }
             Spacer(modifier = Modifier.padding(14.dp))
