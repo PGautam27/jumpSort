@@ -1,11 +1,8 @@
 package com.example.jumpsortapp.presentation.jumpflow
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -14,6 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -62,7 +60,8 @@ fun JumpSortScreen() {
                     crossAxisSpacing = 0.dp) {
                     Column(
                         modifier = Modifier
-                            .height(100.dp).width(125.dp)
+                            .height(100.dp)
+                            .width(125.dp)
                             .clickable { },
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center,
@@ -71,7 +70,8 @@ fun JumpSortScreen() {
                     }
                     Column(
                         modifier = Modifier
-                            .height(100.dp).width(125.dp)
+                            .height(100.dp)
+                            .width(125.dp)
                             .clickable { },
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center
@@ -80,7 +80,8 @@ fun JumpSortScreen() {
                     }
                     Column(
                         modifier = Modifier
-                            .height(100.dp).width(125.dp)
+                            .height(100.dp)
+                            .width(125.dp)
                             .clickable { },
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center
@@ -131,7 +132,27 @@ fun JumpSortScreen() {
             ) {
                 Text(text = "Insert")
             }
-            Spacer(modifier = Modifier.padding(28.dp))
+            Spacer(modifier = Modifier.padding(10.dp))
+            Text(
+                text = "The Array : ",
+                style = TextStyle(fontSize = 20.sp, fontWeight = FontWeight.Bold, color = Color.White),
+                modifier = Modifier.padding(start = 10.dp)
+            )
+            Spacer(modifier = Modifier.padding(6.dp))
+            FlowRow(
+                modifier = Modifier
+                    .width(LocalConfiguration.current.screenWidthDp.dp),
+                mainAxisSpacing = 20.dp,
+                crossAxisAlignment = FlowCrossAxisAlignment.Center,
+                mainAxisAlignment = MainAxisAlignment.Center,
+                crossAxisSpacing = 5.dp,
+
+                ) {
+                repeat(10){
+                    Text(text = "ME")
+                }
+            }
+            Spacer(modifier = Modifier.padding(14.dp))
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceEvenly,
