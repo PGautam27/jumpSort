@@ -1,12 +1,11 @@
 package com.example.jumpsortapp.presentation.jumpflow
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -24,11 +23,15 @@ import com.example.jumpsortapp.ui.theme.ElectricBlue
 import com.google.accompanist.flowlayout.FlowCrossAxisAlignment
 import com.google.accompanist.flowlayout.FlowRow
 import com.google.accompanist.flowlayout.MainAxisAlignment
+import kotlinx.coroutines.flow.forEach
 
+@SuppressLint("StateFlowValueCalledInComposition")
 @Composable
 fun JumpSortScreen(
     viewModel: JumpViewModel = hiltViewModel()
 ) {
+
+    val lists by viewModel._list.collectAsState()
 
     val verticalState = rememberScrollState()
     val inputValues = remember {
@@ -38,7 +41,7 @@ fun JumpSortScreen(
         mutableStateOf("")
     }
     val listValue = remember {
-        mutableListOf("")
+        mutableListOf<String>()
     }
     val keyIndexValue = remember {
         mutableStateOf("")
@@ -46,21 +49,20 @@ fun JumpSortScreen(
     val enabled = remember {
         mutableStateOf(true)
     }
-    val list1 = listOf<String>("70","15","85","35","08")
     Scaffold(
         topBar = {
             TopAppBar(modifier = Modifier
                 .fillMaxWidth()
                 .height(80.dp), contentPadding = PaddingValues(start = 12.dp)) {
                 Text(
-                    text = "Jump Sort Program Calculator",
+                    text = "Jump Search Program Calculator",
                     textAlign = TextAlign.Center,
                     style = TextStyle(fontSize = 28.sp, fontWeight = FontWeight.Bold),
                 )
             }
         },
         bottomBar = {
-            BottomAppBar(modifier = Modifier.fillMaxWidth(), contentPadding = PaddingValues(12.dp)) {
+            BottomAppBar(modifier = Modifier.fillMaxWidth()) {
                 FlowRow(modifier = Modifier
                     .fillMaxSize(),
                     mainAxisSpacing = 6.dp,
@@ -69,8 +71,8 @@ fun JumpSortScreen(
                     crossAxisSpacing = 0.dp) {
                     Column(
                         modifier = Modifier
-                            .height(100.dp)
-                            .width(125.dp)
+                            .height(90.dp)
+                            .width(LocalConfiguration.current.screenWidthDp.dp / 3 - 10.dp)
                             .clickable { },
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center,
@@ -80,7 +82,7 @@ fun JumpSortScreen(
                     Column(
                         modifier = Modifier
                             .height(100.dp)
-                            .width(125.dp)
+                            .width(LocalConfiguration.current.screenWidthDp.dp / 3 - 10.dp)
                             .clickable { },
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center
@@ -90,7 +92,7 @@ fun JumpSortScreen(
                     Column(
                         modifier = Modifier
                             .height(100.dp)
-                            .width(125.dp)
+                            .width(LocalConfiguration.current.screenWidthDp.dp / 3 - 10.dp)
                             .clickable { },
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center
@@ -134,7 +136,10 @@ fun JumpSortScreen(
             Spacer(modifier = Modifier.padding(10.dp))
             Button(
                 onClick = {
-                    listValue.add(0,inputValues.value)
+                    var li = inputValues.value.split(" ".toRegex())
+                    li.forEachIndexed{ i, s ->
+                        listValue.add(i,s)
+                    }
                     viewModel.jumpSearch(listValue)
                           },
                 modifier = Modifier
@@ -147,7 +152,7 @@ fun JumpSortScreen(
             }
             Spacer(modifier = Modifier.padding(10.dp))
             Text(
-                text = "The Array : ",
+                text = "The Sorted Array : ",
                 style = TextStyle(fontSize = 20.sp, fontWeight = FontWeight.Bold, color = Color.White),
                 modifier = Modifier.padding(start = 10.dp)
             )
@@ -161,7 +166,7 @@ fun JumpSortScreen(
                 crossAxisSpacing = 5.dp,
 
                 ) {
-                listValue.sorted().forEach { it ->
+                lists?.forEach { it ->
                     element(element = it)
                 }
             }
