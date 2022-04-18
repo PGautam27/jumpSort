@@ -17,6 +17,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.jumpsortapp.presentation.jumpflow.component.element
 import com.example.jumpsortapp.ui.theme.Aquamarine
 import com.example.jumpsortapp.ui.theme.ElectricBlue
@@ -25,13 +26,19 @@ import com.google.accompanist.flowlayout.FlowRow
 import com.google.accompanist.flowlayout.MainAxisAlignment
 
 @Composable
-fun JumpSortScreen() {
+fun JumpSortScreen(
+    viewModel: JumpViewModel = hiltViewModel()
+) {
+
     val verticalState = rememberScrollState()
     val inputValues = remember {
         mutableStateOf("")
     }
     val keyValue = remember {
         mutableStateOf("")
+    }
+    val listValue = remember {
+        mutableListOf("")
     }
     val keyIndexValue = remember {
         mutableStateOf("")
@@ -113,8 +120,8 @@ fun JumpSortScreen() {
                 enabled = enabled.value,
                 modifier = Modifier
                     .height(90.dp)
-                    .width(400.dp)
-                    .padding(start = 10.dp),
+                    .width(LocalConfiguration.current.screenWidthDp.dp)
+                    .padding(start = 10.dp, end = 10.dp),
                 colors = TextFieldDefaults.outlinedTextFieldColors(
                     focusedBorderColor = ElectricBlue,
                     unfocusedBorderColor = ElectricBlue,
@@ -126,7 +133,11 @@ fun JumpSortScreen() {
             )
             Spacer(modifier = Modifier.padding(10.dp))
             Button(
-                onClick = { /*TODO*/ }, modifier = Modifier
+                onClick = {
+                    listValue.add(0,inputValues.value)
+                    viewModel.jumpSearch(listValue)
+                          },
+                modifier = Modifier
                     .align(Alignment.CenterHorizontally)
                     .clip(
                         RoundedCornerShape(10.dp)
@@ -150,7 +161,7 @@ fun JumpSortScreen() {
                 crossAxisSpacing = 5.dp,
 
                 ) {
-                list1.sorted().forEach { it ->
+                listValue.sorted().forEach { it ->
                     element(element = it)
                 }
             }
@@ -171,7 +182,10 @@ fun JumpSortScreen() {
                         value = keyValue.value,
                         onValueChange = { keyValue.value = it },
                         enabled = enabled.value,
-                        modifier = Modifier.size(50.dp),
+                        modifier = Modifier
+                            .height(50.dp)
+                            .width(60.dp)
+                            .align(Alignment.CenterHorizontally),
                         colors = TextFieldDefaults.outlinedTextFieldColors(
                             focusedBorderColor = ElectricBlue,
                             unfocusedBorderColor = ElectricBlue,
@@ -183,7 +197,9 @@ fun JumpSortScreen() {
                     )
                     Spacer(modifier = Modifier.padding(10.dp))
                     Button(
-                        onClick = { /*TODO*/ }, modifier = Modifier
+                        onClick = {
+                            keyIndexValue.value = viewModel.searchKeyIndex(keyValue.value).toString()
+                        }, modifier = Modifier
                             .clip(
                                 RoundedCornerShape(10.dp)
                             )
@@ -208,14 +224,19 @@ fun JumpSortScreen() {
                     OutlinedTextField(
                         value = keyIndexValue.value,
                         onValueChange = { keyIndexValue.value = it },
-                        enabled = enabled.value,
-                        modifier = Modifier.size(50.dp),
+                        enabled = false,
+                        modifier = Modifier
+                            .height(50.dp)
+                            .width(60.dp)
+                            .align(Alignment.CenterHorizontally),
                         colors = TextFieldDefaults.outlinedTextFieldColors(
                             focusedBorderColor = ElectricBlue,
                             unfocusedBorderColor = ElectricBlue,
                             cursorColor = Color.White,
                             textColor = Color.White,
                             disabledBorderColor = ElectricBlue,
+                            disabledLabelColor = ElectricBlue,
+                            disabledTextColor = Color.White
                         ),
                         maxLines = 1
                     )

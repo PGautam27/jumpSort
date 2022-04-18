@@ -4,13 +4,14 @@ import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import javax.inject.Inject
 import kotlin.math.floor
 import kotlin.math.min
 import kotlin.math.sqrt
 import kotlin.properties.Delegates
 
 @HiltViewModel
-class JumpViewModel():ViewModel(){
+class JumpViewModel  @Inject constructor() :ViewModel(){
 
     private val list = MutableStateFlow<List<String>?>(null)
     val _list = list.asStateFlow()
