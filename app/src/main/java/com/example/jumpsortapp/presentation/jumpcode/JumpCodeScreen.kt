@@ -27,7 +27,7 @@ fun JumpCodeScreen(navController: NavController) {
             TopAppBar(
                 title = {
                     Text(
-                        text = "Jump Sort Code", textAlign = TextAlign.Center,
+                        text = "Jump Search Code", textAlign = TextAlign.Center,
                         style = TextStyle(fontSize = 28.sp, fontWeight = FontWeight.Bold),
                     )
                 },

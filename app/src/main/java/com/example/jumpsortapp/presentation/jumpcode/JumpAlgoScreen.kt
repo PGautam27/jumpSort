@@ -22,7 +22,7 @@ fun JumpAlgoScreen(navController: NavController) {
             TopAppBar(
                 title = {
                     Text(
-                        text = "Jump Sort Algorithm", textAlign = TextAlign.Center,
+                        text = "Jump Search Algorithm", textAlign = TextAlign.Center,
                         style = TextStyle(fontSize = 28.sp, fontWeight = FontWeight.Bold),
                     )
                 },
