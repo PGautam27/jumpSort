@@ -14,6 +14,8 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.jumpsortapp.presentation.jumpcode.JumpAboutScreen
+import com.example.jumpsortapp.presentation.jumpcode.JumpAlgoScreen
 import com.example.jumpsortapp.presentation.jumpcode.JumpCodeScreen
 import com.example.jumpsortapp.presentation.jumpflow.JumpSortScreen
 import com.example.jumpsortapp.presentation.screen.Screen
@@ -41,6 +43,16 @@ class MainActivity : ComponentActivity() {
                         Screen.JumpCodeScreen.route
                     ){
                         JumpCodeScreen(navController = navController)
+                    }
+                    composable(
+                        Screen.JumpAlgoScreen.route
+                    ){
+                        JumpAlgoScreen(navController = navController)
+                    }
+                    composable(
+                        Screen.JumpAboutScreen.route
+                    ){
+                        JumpAboutScreen(navController = navController)
                     }
                 }
             }
