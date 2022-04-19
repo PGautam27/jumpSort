@@ -59,30 +59,33 @@ fun JumpCodeScreen(navController: NavController) {
                 ),
                 modifier = Modifier.padding(vertical = 10.dp, horizontal = 10.dp)
             )
-            Text(text = "fun searchKeyIndex(list : List<String>,length : Int, k : String): Int{\n" +
-                    "        if (list.value==null){\n" +
+            Text(text = "fun searchKeyIndex(list : List<String>,length : Int, k: String): Int {\n" +
+                    "        \n" +
+                    "        if (list.value == null) {\n" +
                     "            return -1\n" +
                     "        }\n" +
                     "        var step = floor(sqrt(length.toDouble()))\n" +
                     "        var prev = 0\n" +
-                    "        while (list.value!![min(step.toInt(),length) -1]<k){\n" +
+                    "        while (list.value!![min(step.toInt(), length) - 1] < k) {\n" +
                     "            prev = step.toInt()\n" +
                     "            step += floor(sqrt(length.toDouble()))\n" +
-                    "            if (prev >= length){\n" +
+                    "            if (prev >= length) {\n" +
                     "                return -1\n" +
                     "            }\n" +
                     "        }\n" +
-                    "        while (list.value!![prev]<k){\n" +
+                    "        while (list.value!![prev] < k) {\n" +
                     "            prev++\n" +
-                    "            if (prev == min(step.toInt(),length))\n" +
-                    "                return -1\n" +
+                    "            if (prev == min(step.toInt(), length)) {\n" +
+                    "            }\n" +
+                    "            return -1\n" +
                     "        }\n" +
                     "\n" +
-                    "        if (list.value!![prev] == k)\n" +
-                    "            return prev\n" +
+                    "        if (list.value!![prev] == k) {\n" +
+                    "        }\n" +
+                    "        return prev\n" +
                     "\n" +
                     "        return -1\n" +
-                    "    }", style = TextStyle(fontSize = 18.sp, color = Color.White)
+                    "    }", style = TextStyle(fontSize = 18.sp, color = Color.White), modifier = Modifier.padding(start = 5.dp, bottom = 10.dp)
             )
         }
     }

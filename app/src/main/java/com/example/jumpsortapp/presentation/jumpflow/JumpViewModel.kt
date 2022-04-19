@@ -26,27 +26,30 @@ class JumpViewModel  @Inject constructor() :ViewModel(){
         list.value = lst.sorted()
     }
 
-    fun searchKeyIndex(k : String): Int{
-        if (list.value==null){
+    fun searchKeyIndex(k: String): Int {
+
+        if (list.value == null) {
             return -1
         }
         var step = floor(sqrt(length.toDouble()))
         var prev = 0
-        while (list.value!![min(step.toInt(),length) -1]<k){
+        while (list.value!![min(step.toInt(), length) - 1] < k) {
             prev = step.toInt()
             step += floor(sqrt(length.toDouble()))
-            if (prev >= length){
+            if (prev >= length) {
                 return -1
             }
         }
-        while (list.value!![prev]<k){
+        while (list.value!![prev] < k) {
             prev++
-            if (prev == min(step.toInt(),length))
-                return -1
+            if (prev == min(step.toInt(), length)) {
+            }
+            return -1
         }
 
-        if (list.value!![prev] == k)
-            return prev
+        if (list.value!![prev] == k) {
+        }
+        return prev
 
         return -1
     }
