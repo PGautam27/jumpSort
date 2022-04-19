@@ -16,10 +16,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.jumpsortapp.ui.theme.Aquamarine
 
 @Composable
-fun JumpCodeScreen() {
+fun JumpCodeScreen(navController: NavController) {
     val verticalState = rememberScrollState()
     Scaffold(
         topBar = {
@@ -31,7 +32,7 @@ fun JumpCodeScreen() {
                     )
                 },
                 navigationIcon = {
-                    IconButton(onClick = {  }) {
+                    IconButton(onClick = { navController.popBackStack() }) {
                         Icon(Icons.Filled.ArrowBack, "backIcon", modifier = Modifier.size(35.dp))
                     }
                 },

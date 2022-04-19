@@ -17,7 +17,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import com.example.jumpsortapp.presentation.jumpflow.component.element
+import com.example.jumpsortapp.presentation.screen.Screen
 import com.example.jumpsortapp.ui.theme.Aquamarine
 import com.example.jumpsortapp.ui.theme.ElectricBlue
 import com.google.accompanist.flowlayout.FlowCrossAxisAlignment
@@ -28,6 +30,7 @@ import kotlinx.coroutines.flow.forEach
 @SuppressLint("StateFlowValueCalledInComposition")
 @Composable
 fun JumpSortScreen(
+    navController: NavController,
     viewModel: JumpViewModel = hiltViewModel()
 ) {
 
@@ -73,7 +76,7 @@ fun JumpSortScreen(
                         modifier = Modifier
                             .height(90.dp)
                             .width(LocalConfiguration.current.screenWidthDp.dp / 3 - 10.dp)
-                            .clickable { },
+                            .clickable { navController.navigate(Screen.JumpCodeScreen.route) },
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center,
                     ) {
@@ -87,7 +90,7 @@ fun JumpSortScreen(
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center
                     ) {
-                        Text(text = "Code",fontWeight = FontWeight.Bold, fontSize = 22.sp)
+                        Text(text = "Algo",fontWeight = FontWeight.Bold, fontSize = 22.sp)
                     }
                     Column(
                         modifier = Modifier
@@ -97,7 +100,7 @@ fun JumpSortScreen(
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center
                     ) {
-                        Text(text = "Code",fontWeight = FontWeight.Bold, fontSize = 22.sp)
+                        Text(text = "About",fontWeight = FontWeight.Bold, fontSize = 22.sp)
                     }
                 }
             }
