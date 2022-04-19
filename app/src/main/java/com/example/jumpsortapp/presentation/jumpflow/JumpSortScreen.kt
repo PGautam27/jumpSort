@@ -86,7 +86,7 @@ fun JumpSortScreen(
                         modifier = Modifier
                             .height(100.dp)
                             .width(LocalConfiguration.current.screenWidthDp.dp / 3 - 10.dp)
-                            .clickable { },
+                            .clickable { navController.navigate(Screen.JumpAlgoScreen.route)},
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center
                     ) {
@@ -96,7 +96,7 @@ fun JumpSortScreen(
                         modifier = Modifier
                             .height(100.dp)
                             .width(LocalConfiguration.current.screenWidthDp.dp / 3 - 10.dp)
-                            .clickable { },
+                            .clickable { navController.navigate(Screen.JumpAboutScreen.route) },
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center
                     ) {

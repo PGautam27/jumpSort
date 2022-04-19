@@ -1,5 +1,6 @@
 package com.example.jumpsortapp.presentation.jumpcode
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -14,6 +15,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.jumpsortapp.ui.theme.Aquamarine
 
 @Composable
 fun JumpAlgoScreen(navController: NavController) {
@@ -22,7 +24,7 @@ fun JumpAlgoScreen(navController: NavController) {
             TopAppBar(
                 title = {
                     Text(
-                        text = "Jump Search Algorithm", textAlign = TextAlign.Center,
+                        text = "Jump Search Algo", textAlign = TextAlign.Center,
                         style = TextStyle(fontSize = 28.sp, fontWeight = FontWeight.Bold),
                     )
                 },
@@ -36,11 +38,9 @@ fun JumpAlgoScreen(navController: NavController) {
         }
     ) {
         Column(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier.fillMaxSize().background(Aquamarine),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Text(text = "")
-        }
+        ){}
     }
 }
