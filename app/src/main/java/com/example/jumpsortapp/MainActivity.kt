@@ -20,8 +20,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             JumpSortAppTheme {
                 // A surface container using the 'background' color from the theme
-                JumpSortScreen()
-
+               // JumpSortScreen()
+                JumpCodeScreen()
             }
         }
     }
