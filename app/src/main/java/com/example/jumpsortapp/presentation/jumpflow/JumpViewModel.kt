@@ -53,4 +53,8 @@ class JumpViewModel  @Inject constructor() :ViewModel(){
 
         return -1
     }
+
+    fun eraseList(){
+        list.value = emptyList()
+    }
 }

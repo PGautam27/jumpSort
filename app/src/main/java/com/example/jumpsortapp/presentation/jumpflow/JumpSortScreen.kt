@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -13,6 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -50,7 +52,7 @@ fun JumpSortScreen(
         mutableStateOf("")
     }
     val enabled = remember {
-        mutableStateOf(true)
+        mutableStateOf(false)
     }
     Scaffold(
         topBar = {
@@ -122,10 +124,10 @@ fun JumpSortScreen(
             OutlinedTextField(
                 value = inputValues.value,
                 onValueChange = { inputValues.value = it },
-                enabled = enabled.value,
+                enabled = true,
                 modifier = Modifier
                     .height(90.dp)
-                    .width(LocalConfiguration.current.screenWidthDp.dp)
+                    .width(LocalConfiguration.current.screenWidthDp.dp/2)
                     .padding(start = 10.dp, end = 10.dp),
                 colors = TextFieldDefaults.outlinedTextFieldColors(
                     focusedBorderColor = ElectricBlue,
@@ -134,6 +136,7 @@ fun JumpSortScreen(
                     textColor = Color.White,
                     disabledBorderColor = ElectricBlue,
                 ),
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                 maxLines = 3
             )
             Spacer(modifier = Modifier.padding(10.dp))
@@ -144,6 +147,7 @@ fun JumpSortScreen(
                         listValue.add(i,s)
                     }
                     viewModel.jumpSearch(listValue)
+                    enabled.value = lists?.get(0) != ""
                           },
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally)
@@ -154,23 +158,28 @@ fun JumpSortScreen(
                 Text(text = "Insert")
             }
             Spacer(modifier = Modifier.padding(10.dp))
-            Text(
-                text = "The Sorted Array : ",
-                style = TextStyle(fontSize = 20.sp, fontWeight = FontWeight.Bold, color = Color.White),
-                modifier = Modifier.padding(start = 10.dp)
-            )
-            Spacer(modifier = Modifier.padding(6.dp))
-            FlowRow(
-                modifier = Modifier
-                    .width(LocalConfiguration.current.screenWidthDp.dp),
-                mainAxisSpacing = 20.dp,
-                crossAxisAlignment = FlowCrossAxisAlignment.Center,
-                mainAxisAlignment = MainAxisAlignment.Center,
-                crossAxisSpacing = 5.dp,
+            if (enabled.value){
+                Text(
+                    text = "The Sorted Array : ",
+                    style = TextStyle(fontSize = 20.sp, fontWeight = FontWeight.Bold, color = Color.White),
+                    modifier = Modifier.padding(start = 10.dp)
+                )
+                Spacer(modifier = Modifier.padding(6.dp))
+                FlowRow(
+                    modifier = Modifier
+                        .width(LocalConfiguration.current.screenWidthDp.dp),
+                    mainAxisSpacing = 20.dp,
+                    crossAxisAlignment = FlowCrossAxisAlignment.Center,
+                    mainAxisAlignment = MainAxisAlignment.Center,
+                    crossAxisSpacing = 5.dp,
 
-                ) {
-                lists?.forEach { it ->
-                    element(element = it)
+                    ) {
+                    if (lists?.get(0)==""){
+                        return@FlowRow
+                    }
+                    lists?.forEach { it ->
+                        element(element = it)
+                    }
                 }
             }
             Spacer(modifier = Modifier.padding(14.dp))
