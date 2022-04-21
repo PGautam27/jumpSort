@@ -142,12 +142,11 @@ fun JumpSortScreen(
             Spacer(modifier = Modifier.padding(10.dp))
             Button(
                 onClick = {
-                    var li = inputValues.value.split(" ".toRegex())
+                    val li = inputValues.value.split(" ".toRegex())
                     li.forEachIndexed{ i, s ->
                         listValue.add(i,s)
                     }
                     viewModel.jumpSearch(listValue)
-                    enabled.value = lists?.get(0) != ""
                           },
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally)
@@ -198,7 +197,7 @@ fun JumpSortScreen(
                     OutlinedTextField(
                         value = keyValue.value,
                         onValueChange = { keyValue.value = it },
-                        enabled = enabled.value,
+                        enabled = true,
                         modifier = Modifier
                             .height(50.dp)
                             .width(60.dp)
