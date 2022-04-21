@@ -157,7 +157,6 @@ fun JumpSortScreen(
                 Text(text = "Insert")
             }
             Spacer(modifier = Modifier.padding(10.dp))
-            if (enabled.value){
                 Text(
                     text = "The Sorted Array : ",
                     style = TextStyle(fontSize = 20.sp, fontWeight = FontWeight.Bold, color = Color.White),
@@ -180,7 +179,6 @@ fun JumpSortScreen(
                         element(element = it)
                     }
                 }
-            }
             Spacer(modifier = Modifier.padding(14.dp))
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -209,7 +207,8 @@ fun JumpSortScreen(
                             textColor = Color.White,
                             disabledBorderColor = ElectricBlue,
                         ),
-                        maxLines = 1
+                        maxLines = 1,
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
                     )
                     Spacer(modifier = Modifier.padding(10.dp))
                     Button(
