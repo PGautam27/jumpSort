@@ -127,7 +127,7 @@ fun JumpSortScreen(
                 enabled = true,
                 modifier = Modifier
                     .height(90.dp)
-                    .width(LocalConfiguration.current.screenWidthDp.dp/2)
+                    .width(LocalConfiguration.current.screenWidthDp.dp)
                     .padding(start = 10.dp, end = 10.dp),
                 colors = TextFieldDefaults.outlinedTextFieldColors(
                     focusedBorderColor = ElectricBlue,
