@@ -9,10 +9,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.jumpsortapp.presentation.jumpSort.jumpcode.JumpAboutScreen
-import com.example.jumpsortapp.presentation.jumpSort.jumpcode.JumpAlgoScreen
-import com.example.jumpsortapp.presentation.jumpSort.jumpcode.JumpCodeScreen
-import com.example.jumpsortapp.presentation.jumpSort.jumpflow.JumpSortScreen
+import com.example.jumpsortapp.presentation.jumpSearch.jumpcode.JumpAboutScreen
+import com.example.jumpsortapp.presentation.jumpSearch.jumpcode.JumpAlgoScreen
+import com.example.jumpsortapp.presentation.jumpSearch.jumpcode.JumpCodeScreen
+import com.example.jumpsortapp.presentation.jumpSearch.jumpflow.JumpSortScreen
 import com.example.jumpsortapp.presentation.screen.Screen
 import com.example.jumpsortapp.ui.theme.JumpSortAppTheme
 import dagger.hilt.android.AndroidEntryPoint

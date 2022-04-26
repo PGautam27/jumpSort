@@ -1,4 +1,4 @@
-package com.example.jumpsortapp.presentation.jumpSort.jumpcode
+package com.example.jumpsortapp.presentation.jumpSearch.jumpcode
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
