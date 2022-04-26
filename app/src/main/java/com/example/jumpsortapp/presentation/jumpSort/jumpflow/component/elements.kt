@@ -1,4 +1,4 @@
-package com.example.jumpsortapp.presentation.jumpflow.component
+package com.example.jumpsortapp.presentation.jumpSort.jumpflow.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box

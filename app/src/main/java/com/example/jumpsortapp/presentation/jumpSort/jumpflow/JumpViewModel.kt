@@ -1,4 +1,4 @@
-package com.example.jumpsortapp.presentation.jumpflow
+package com.example.jumpsortapp.presentation.jumpSort.jumpflow
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel

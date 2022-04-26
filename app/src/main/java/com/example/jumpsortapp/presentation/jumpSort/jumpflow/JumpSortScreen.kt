@@ -1,4 +1,4 @@
-package com.example.jumpsortapp.presentation.jumpflow
+package com.example.jumpsortapp.presentation.jumpSort.jumpflow
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.*
@@ -20,14 +20,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.example.jumpsortapp.presentation.jumpflow.component.element
+import com.example.jumpsortapp.presentation.jumpSort.jumpflow.component.element
 import com.example.jumpsortapp.presentation.screen.Screen
 import com.example.jumpsortapp.ui.theme.Aquamarine
 import com.example.jumpsortapp.ui.theme.ElectricBlue
 import com.google.accompanist.flowlayout.FlowCrossAxisAlignment
 import com.google.accompanist.flowlayout.FlowRow
 import com.google.accompanist.flowlayout.MainAxisAlignment
-import kotlinx.coroutines.flow.forEach
 
 @SuppressLint("StateFlowValueCalledInComposition")
 @Composable
