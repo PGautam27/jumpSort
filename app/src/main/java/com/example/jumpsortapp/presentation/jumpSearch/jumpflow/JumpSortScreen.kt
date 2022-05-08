@@ -24,6 +24,7 @@ import com.example.jumpsortapp.presentation.jumpSearch.jumpflow.component.elemen
 import com.example.jumpsortapp.presentation.screen.Screen
 import com.example.jumpsortapp.ui.theme.Aquamarine
 import com.example.jumpsortapp.ui.theme.ElectricBlue
+
 import com.google.accompanist.flowlayout.FlowCrossAxisAlignment
 import com.google.accompanist.flowlayout.FlowRow
 import com.google.accompanist.flowlayout.MainAxisAlignment
